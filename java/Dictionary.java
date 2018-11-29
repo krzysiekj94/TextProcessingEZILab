@@ -36,6 +36,9 @@ public class Dictionary{
     	
     	for( String term : _terms )
     	{
+    		dIDFValue = 0.0;
+    		iNumberOfDocumentsContainingTerm = 0;
+    		
     		for( Document document : documents )
         	{
     			if( IsExistTermInDocument( document, term ) )
@@ -44,7 +47,7 @@ public class Dictionary{
     			}
         	}
     		
-    		if( iNumberOfDocumentsContainingTerm > 0 && iDocumentsCount > 0 )
+    		if( iNumberOfDocumentsContainingTerm > 0 )
     		{
     			dIDFValue =  Math.log( iDocumentsCount / iNumberOfDocumentsContainingTerm );
     		}
@@ -54,6 +57,6 @@ public class Dictionary{
     }
 
 	private boolean IsExistTermInDocument( Document oDocument, String oTermString ){
-		return oDocument.getTitle().contains(oTermString) || oDocument.getContent().contains(oTermString);
+		return oDocument.getTerms().contains( oTermString );
 	}
 }

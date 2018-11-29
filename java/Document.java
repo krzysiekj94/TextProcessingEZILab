@@ -214,7 +214,7 @@ public class Document{
 		
 		dDenominatorPart = Math.sqrt( dDenominatorPart1 * dDenominatorPart2 );
 		
-		if( dDenominatorPart != 0 )
+		if( dDenominatorPart != 0 && Double.isNaN( dDenominatorPart ) )
 		{
 			dCosineSimilarity = dCounterPart / dDenominatorPart;
 		}
