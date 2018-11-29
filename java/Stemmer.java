@@ -1,24 +1,23 @@
 public class Stemmer {
 	
-	static PorterStemmer stemmer = null;
+	static PorterStemmer oStemmer = null;
 	
-	//DONE!
-    public static String stemToken(String token) {
+    public static String stemToken( String oTokenString ) {
         //TODO: use PorterStemmer to stem document
         // you can see exemplary use of stemmer in method main() of PorterStemmer class
-        
-    	if(stemmer == null)
+        //DONE!
+    	
+    	if( oStemmer == null )
     	{
-    		stemmer = new PorterStemmer();
+    		oStemmer = new PorterStemmer();
     	}
     	
-    	if(stemmer != null)
+    	if( oStemmer != null )
     	{
-            stemmer.add(token.toCharArray(), token.length());
-            stemmer.stem();
-            System.out.println(stemmer.toString());	
+            oStemmer.add( oTokenString.toCharArray(), oTokenString.length() );
+            oStemmer.stem();
     	}
     	
-        return token;
+        return oTokenString;
     }
 }
