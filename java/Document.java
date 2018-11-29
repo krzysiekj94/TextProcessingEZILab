@@ -55,7 +55,7 @@ public class Document{
     	//TODO remove non-alphanumeric signs, keep only letters, digits and spaces.
     	//DONE!
     	
-    	String oNewContentString = oContentString.replaceAll( "/[^A-Za-z0-9 ]/", "" );
+    	String oNewContentString = oContentString.replaceAll( "[^A-Za-z0-9 ]", "" );
     	return oNewContentString;
     }
 
@@ -79,16 +79,17 @@ public class Document{
     	
     	for( String oTermFromDictionaryString : oDictionary.getTerms() )
     	{
+    		iTermExistCounter = 0;
+    		
     		for( String oTermFromListString : oTermsListString )
     		{
     			if( oTermFromListString.equals( oTermFromDictionaryString ) )
     			{
-    				iTermExistCounter++;	
+    				iTermExistCounter++;
     			}
     		}
     		
     		oBagOfWordHashMap.put( oTermFromDictionaryString, (double) iTermExistCounter );
-    		iTermExistCounter = 0;
     	}
     	
     	return oBagOfWordHashMap;
@@ -207,14 +208,15 @@ public class Document{
 		
 		for( int iCounter = 0; iCounter < _tfIdfs.size(); iCounter++ )
 		{
-			dCounterPart += _tfIdfs.get(iCounter) * oQueryDocument.getTfIdfs().get( iCounter );
+			dCounterPart += _tfIdfs.get( iCounter ) * oQueryDocument.getTfIdfs().get( iCounter );
 			dDenominatorPart1 += Math.pow( _tfIdfs.get( iCounter ), 2.0 );
 			dDenominatorPart2 += Math.pow( oQueryDocument.getTfIdfs().get( iCounter ), 2.0 );
 		}
 		
 		dDenominatorPart = Math.sqrt( dDenominatorPart1 * dDenominatorPart2 );
 		
-		if( dDenominatorPart != 0 && Double.isNaN( dDenominatorPart ) )
+		if( dDenominatorPart != 0 
+			&& !Double.isNaN( dDenominatorPart ) )
 		{
 			dCosineSimilarity = dCounterPart / dDenominatorPart;
 		}
