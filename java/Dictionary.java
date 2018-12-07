@@ -49,7 +49,7 @@ public class Dictionary{
     		
     		if( iNumberOfDocumentsContainingTerm > 0 )
     		{
-    			dIDFValue =  Math.log( iDocumentsCount / iNumberOfDocumentsContainingTerm );
+    			dIDFValue =  Math.log( (double) iDocumentsCount / iNumberOfDocumentsContainingTerm );
     		}
     		
     		_idfs.put( term, dIDFValue );
