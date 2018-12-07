@@ -56,6 +56,8 @@ public class Document{
     	//DONE!
     	
     	String oNewContentString = oContentString.replaceAll( "[^A-Za-z0-9 ]", "" );
+    	oNewContentString = oNewContentString.toLowerCase();
+    	
     	return oNewContentString;
     }
 
