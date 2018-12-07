@@ -18,6 +18,6 @@ public class Stemmer {
             oStemmer.stem();
     	}
     	
-        return oTokenString;
+        return oStemmer.toString();
     }
 }
